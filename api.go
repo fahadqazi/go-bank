@@ -67,7 +67,6 @@ func (s *APIServer) handleGetAccountById(w http.ResponseWriter, r *http.Request)
 		return err
 	}
 
-	fmt.Println(id)
 	return WriteJSON(w, http.StatusOK, account)
 }
 
