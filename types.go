@@ -2,8 +2,25 @@ package main
 
 import (
 	"math/rand"
+	"net/http"
 	"time"
 )
+
+type APIServer struct {
+	listenAddr string
+	store      Storage
+}
+
+type apiFunc func(http.ResponseWriter, *http.Request) error
+
+type ApiError struct {
+	Error string `json:"error"`
+}
+
+type TransferRequest struct {
+	ToAccount int `json:"toAccount"`
+	Amount    int `json:"amount"`
+}
 
 type CreateAccountRequest struct {
 	FirstName string `json:"firstName"`
